@@ -1,10 +1,14 @@
 const express = require("express")
 const User = require("../models/User")
 const bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
 const { body, validationResult } = require('express-validator');
 const router = express.Router()
 
 // Uses a version 16.15.0 for express-validator.
+
+// jsonwebtoken .sign() take 2 parameters data and secretorPrivteKey. Threfore, our secretorPrivateKey is -
+const JWT_SECRET_KEY = "thisisititisthis23$"
 
 //Create a User using - POST "/api/auth/createuser". Login not required
 router.post("/createuser", [
@@ -35,7 +39,18 @@ router.post("/createuser", [
             password: securePassword
         })
 
-        res.json(user)
+        // Data retrieval will fastest with id because it id is our indexes in database by default therefore we will retrieve data in .sign() of jwt using id
+
+        const data = {
+            user:{
+                id: user.id
+            }
+        }
+
+        // after generating authentication token with below function of jwt, we can verify that token using jwt.verify()
+        const authToken = jwt.sign(data, JWT_SECRET_KEY)
+
+        res.json({authToken})
 
     }
     catch(error){
