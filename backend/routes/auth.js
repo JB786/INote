@@ -42,7 +42,7 @@ router.post("/createuser", [
         // Data retrieval will fastest with id because it id is our indexes in database by default therefore we will retrieve data in .sign() of jwt using id
 
         const data = {
-            user:{
+            user: {
                 id: user.id
             }
         }
@@ -50,12 +50,54 @@ router.post("/createuser", [
         // after generating authentication token with below function of jwt, we can verify that token using jwt.verify()
         const authToken = jwt.sign(data, JWT_SECRET_KEY)
 
-        res.json({authToken})
+        res.json({ authToken })
 
     }
-    catch(error){
+    catch (error) {
         console.error(error.message)
-        return res.status(500).send("Some Error Occured!")
+        return res.status(500).send("Internal Server Error!")
+    }
+});
+
+//Create a login using - POST "/api/auth/login". Login not required
+router.post("/login", [
+    body("email", "Invalid Email!").isEmail(),
+    body("password", "Password field cannot be blank").exists()
+], async (req, res) => {
+    // Finds the validation errors in this request and wraps them in an object with handy functions
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    // Extract email and password from req.body using destructuring.
+    const { email, password } = req.body
+
+    try {
+
+        let user = await User.findOne({ email })
+        if (!user) {
+            return res.status(400).json({ error: "Please try to login with correct credentials!!" })
+        }
+
+        const passwordCompare = await bcrypt.compare(password, user.password)
+        if (!passwordCompare) {
+            return res.status(400).json({ error: "Please try to login with correct credentials!!" })
+        }
+
+        const data = {
+            user: {
+                id: user.id
+            }
+        }
+
+        const authToken = jwt.sign(data, JWT_SECRET_KEY)
+
+        res.json({ authToken })
+
+    } catch (error) {
+        console.error(error.message)
+        return res.status(500).send("Internal Server Error!")
     }
 });
 
