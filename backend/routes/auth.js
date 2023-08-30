@@ -3,6 +3,7 @@ const User = require("../models/User")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const { body, validationResult } = require('express-validator');
+const fetchuser = require("../middleware/fetchuser")
 const router = express.Router()
 
 // Uses a version 16.15.0 for express-validator.
@@ -10,7 +11,7 @@ const router = express.Router()
 // jsonwebtoken .sign() take 2 parameters data and secretorPrivteKey. Threfore, our secretorPrivateKey is -
 const JWT_SECRET_KEY = "thisisititisthis23$"
 
-//Create a User using - POST "/api/auth/createuser". Login not required
+// Route-1: Create a User using - POST "/api/auth/createuser". Login not required
 router.post("/createuser", [
     body("name", "Atleast 3 characters long!").isLength({ min: 3 }),
     body("email", "Invalid Email!").isEmail(),
@@ -59,7 +60,7 @@ router.post("/createuser", [
     }
 });
 
-//Create a login using - POST "/api/auth/login". Login not required
+// Route-2: Create a login using - POST "/api/auth/login". Login not required
 router.post("/login", [
     body("email", "Invalid Email!").isEmail(),
     body("password", "Password field cannot be blank").exists()
@@ -94,6 +95,21 @@ router.post("/login", [
         const authToken = jwt.sign(data, JWT_SECRET_KEY)
 
         res.json({ authToken })
+
+    } catch (error) {
+        console.error(error.message)
+        return res.status(500).send("Internal Server Error!")
+    }
+});
+
+// Route-3: Create a getuser using - POST "/api/auth/getuser". Login required
+router.post("/getuser", fetchuser, async (req, res) => {
+
+    try {
+
+        const userId = req.user.id
+        let user = await User.findById(userId).select("-password")
+        res.send(user)
 
     } catch (error) {
         console.error(error.message)
