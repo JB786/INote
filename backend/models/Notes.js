@@ -3,6 +3,11 @@ const {Schema} = mongoose;
 
 const NotesSchema = new Schema({
 
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user"
+        // needs a referece model for user id which is "user" in this case.
+    },
     title: {
         type: String,
         required: true
