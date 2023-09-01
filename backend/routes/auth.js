@@ -109,6 +109,7 @@ router.post("/getuser", fetchuser, async (req, res) => {
 
         const userId = req.user.id
         let user = await User.findById(userId).select("-password")
+        // we use .select("-password") so that it won't fetch password of the user.
         res.send(user)
 
     } catch (error) {
