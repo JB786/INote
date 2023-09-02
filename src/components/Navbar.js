@@ -11,7 +11,7 @@ function Navbar() {
     },[location])
 
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className="navbar navbar-expand-lg bg-warning" data-bs-theme="light">
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">
                 <img src={logo} alt="Bootstrap" width="60" height="40"/>
@@ -22,15 +22,15 @@ function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className={`nav-link ${location.pathname === "/" ? "active":""}`} aria-current="page" to="/">Home</Link>
+                            <Link className={`nav-link ${location.pathname === "/" ? "active":""} fw-bold`} aria-current="page" to="/">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className={`nav-link ${location.pathname === "/about" ? "active":""}`} to="/about">About</Link>
+                            <Link className={`nav-link ${location.pathname === "/about" ? "active":""} fw-bold`} to="/about">About</Link>
                         </li>
                     </ul>
                     <form className="d-flex" role="search">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                            <button className="btn btn-outline-success" type="submit">Search</button>
+                            <button className="btn btn-outline-dark" type="submit">Search</button>
                     </form>
                 </div>
             </div>
