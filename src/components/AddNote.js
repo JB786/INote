@@ -24,7 +24,7 @@ function AddNote() {
 
     return (
         <div className='container my-4'>
-            <h2>Add New Note</h2>
+            <h2>New Note</h2>
             <form className='my-3'>
                 <div className="mb-3">
                     <label htmlFor="title" className="form-label">Title</label>
@@ -38,7 +38,7 @@ function AddNote() {
                     <label htmlFor="tag" className="form-label">Tag</label>
                     <input type="text" className="form-control" id="tag" name="tag" onChange={onChange} />
                 </div>
-                <button type="submit" className="btn btn-dark" onClick={handleAddClick}>Add</button>
+                <button type="submit" className="btn btn-dark" onClick={handleAddClick}>Create</button>
             </form>
         </div>
     )
