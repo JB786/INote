@@ -23,48 +23,39 @@ const NoteState = (props)=>{
           "__v": 0
         },
         {
-          "_id": "64f34e09888f21dc2fec4744",
+          "_id": "64f34e2e888f21dc2fec4746",
           "user": "64ef63525cb64bbc1bc7b30b",
-          "title": "Task",
-          "description": "Build a website using Backend.",
-          "tag": "Technical",
-          "date": "2023-09-02T15:00:25.304Z",
+          "title": "Task-2",
+          "description": "Design Frontend of the same website.",
+          "tag": "Technical Thug",
+          "date": "2023-09-02T15:01:02.534Z",
           "__v": 0
         },
         {
-          "_id": "64f34e09888f21dc2fec4744",
+          "_id": "64f37459fe7f51121eebce37",
           "user": "64ef63525cb64bbc1bc7b30b",
-          "title": "Task",
-          "description": "Build a website using Backend.",
-          "tag": "Technical",
-          "date": "2023-09-02T15:00:25.304Z",
+          "title": "My Title",
+          "description": "Design Notes Display",
+          "tag": "Design",
+          "date": "2023-02-09T17:43:30.000Z",
           "__v": 0
         },
         {
-          "_id": "64f34e09888f21dc2fec4744",
+          "_id": "64f37496cbb34d04a6eb039a",
           "user": "64ef63525cb64bbc1bc7b30b",
-          "title": "Task",
-          "description": "Build a website using Backend.",
-          "tag": "Technical",
-          "date": "2023-09-02T15:00:25.304Z",
+          "title": "My Title 2",
+          "description": "Design Notes Display 2",
+          "tag": "Design 2",
+          "date": "2023-09-01T18:30:00.000Z",
           "__v": 0
         },
         {
-          "_id": "64f34e09888f21dc2fec4744",
+          "_id": "64f375355ade584e170538f7",
           "user": "64ef63525cb64bbc1bc7b30b",
-          "title": "Task",
-          "description": "Build a website using Backend.",
-          "tag": "Technical",
-          "date": "2023-09-02T15:00:25.304Z",
-          "__v": 0
-        },
-        {
-          "_id": "64f34e09888f21dc2fec4744",
-          "user": "64ef63525cb64bbc1bc7b30b",
-          "title": "Task",
-          "description": "Build a website using Backend.",
-          "tag": "Technical",
-          "date": "2023-09-02T15:00:25.304Z",
+          "title": "My Title 3",
+          "description": "Design Notes Display 3",
+          "tag": "Design 3",
+          "date": "2023-09-02T17:47:05.211Z",
           "__v": 0
         }
       ]

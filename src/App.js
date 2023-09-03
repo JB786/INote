@@ -4,12 +4,14 @@ import Home from './components/Home';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import NoteState from './context/notes/NoteState';
+import Alert from './components/Alert';
 
 function App() {
   return (
     <NoteState>
       <Router>
         <Navbar />
+        <Alert message="Success" />
         <div className="container">
           <Routes>
             <Route exact path='/' element={<Home />} />
