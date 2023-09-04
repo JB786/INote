@@ -27,6 +27,9 @@ const NoteState = (props) => {
     const json = await response.json();
     setNotes(json);
   }
+
+
+
   // Add a note
   const addNote = async (title, description, tag) => {
 
@@ -40,7 +43,7 @@ const NoteState = (props) => {
         "Content-Type": "application/json",
         "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZjYzNTI1Y2I2NGJiYzFiYzdiMzBiIn0sImlhdCI6MTY5MzQxMDQ4MX0.3YCSC2xVEyI4_AeeEzPIxZ_w6gdzkwmFeX8nvTPGimA"
       },
-      body: JSON.stringify({ title, description, tag }),
+      body: JSON.stringify({ title, description, tag })
     });
 
     const note = await response.json();
@@ -69,6 +72,8 @@ const NoteState = (props) => {
     setNotes(newNote)
   }
 
+
+
   // Edit a note
   const editNote = async (id, title, description, tag) => {
     // console.log("Editing the Note with id " + id);
@@ -80,7 +85,7 @@ const NoteState = (props) => {
         "Content-Type": "application/json",
         "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRlZjYzNTI1Y2I2NGJiYzFiYzdiMzBiIn0sImlhdCI6MTY5MzQxMDQ4MX0.3YCSC2xVEyI4_AeeEzPIxZ_w6gdzkwmFeX8nvTPGimA"
       },
-      body: JSON.stringify({ title, description, tag }),
+      body: JSON.stringify({ title, description, tag })
     });
 
     const json = await response.json();
@@ -102,6 +107,8 @@ const NoteState = (props) => {
     }
     setNotes(newNote)
   }
+
+  
 
   return (
     <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, getNotes }}>
