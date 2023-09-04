@@ -12,7 +12,7 @@ const NoteState = (props) => {
   // Get all notes
   const getNotes = async () => {
 
-    console.log("Fetching All Notes...");
+    // console.log("Fetching All Notes...");
 
     //API Call
 
@@ -30,7 +30,7 @@ const NoteState = (props) => {
   // Add a note
   const addNote = async (title, description, tag) => {
 
-    console.log("Adding the Note...");
+    // console.log("Adding the Note...");
 
     //API Call
 
@@ -43,26 +43,15 @@ const NoteState = (props) => {
       body: JSON.stringify({ title, description, tag }),
     });
 
-    const json = await response.json();
-    console.log(json);
-
-    const note = {
-      "_id": "64f395355ade584e170538f7",
-      "user": "64ef63525cb64bbc1bc7b30b",
-      "title": title,
-      "description": description,
-      "tag": tag,
-      "date": "2023-09-02T17:47:05.211Z",
-      "__v": 0
-    }
-
+    const note = await response.json();
     setNotes(notes.concat(note))
+
   }
 
 
   // Delete a note
   const deleteNote = async(id) => {
-    console.log("Deleting the Note with id " + id);
+    // console.log("Deleting the Note with id " + id);
 
     // API Call
     const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
@@ -74,7 +63,7 @@ const NoteState = (props) => {
     });
 
     const json = await response.json();
-    console.log(json)
+    // console.log(json)
 
     const newNote = notes.filter((note) => { return note._id !== id })
     setNotes(newNote)
@@ -82,7 +71,7 @@ const NoteState = (props) => {
 
   // Edit a note
   const editNote = async (id, title, description, tag) => {
-    console.log("Editing the Note with id " + id);
+    // console.log("Editing the Note with id " + id);
 
     // API Call
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
@@ -95,7 +84,7 @@ const NoteState = (props) => {
     });
 
     const json = await response.json();
-    console.log(json)
+    // console.log(json)
 
 
     // Logic to edit in client
