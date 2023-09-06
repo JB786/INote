@@ -26,7 +26,11 @@ function AddNote() {
     }
 
     const handleClearClick = () => {
-        setNote(note)
+        setNote({
+            title: "",
+            description: "",
+            tag: ""
+        })
     }
 
     const onChange = (events) => {
@@ -51,7 +55,7 @@ function AddNote() {
                 </div>
                 <div className='d-flex justify-content-center my-4'>
                     <button type="submit" className="btn btn-dark mx-3">Create Note</button>
-                    <button type="reset" className="btn btn-danger" onClick={handleClearClick}>Clear</button>
+                    <button type="reset" className="btn btn-danger" onClick={handleClearClick}>Clear Fields</button>
                 </div>
             </form>
         </div>
