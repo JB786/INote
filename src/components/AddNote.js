@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import noteContext from '../context/notes/noteContext';
 
 
-function AddNote() {
+function AddNote(props) {
     const context = useContext(noteContext);
     const { addNote } = context;
 
@@ -23,6 +23,7 @@ function AddNote() {
             description: "",
             tag: ""
         })
+        props.showAlert("Note Created Successfully.", "success");
     }
 
     const handleClearClick = () => {
