@@ -27,17 +27,17 @@ function Navbar() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
+                        {localStorage.getItem("token") && <li className="nav-item">
                             <Link className={`nav-link ${location.pathname === "/" ? "active" : ""} fw-bold`} aria-current="page" to="/">Home</Link>
-                        </li>
-                        <li className="nav-item">
+                        </li>}
+                        {localStorage.getItem("token") && <li className="nav-item">
                             <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""} fw-bold`} to="/about">About</Link>
-                        </li>
+                        </li>}
                     </ul>
                     {!localStorage.getItem("token") ? <form className="d-flex" role="search">
-                        <Link className="btn btn-dark mx-1" to="/login" role="button">Login</Link>
-                        <Link className="btn btn-dark" to="/signup" role="button">Sign Up</Link>
-                    </form>: <button onClick={handleLogout} className="btn btn-dark" role="button">Logout</button>}
+                        {location.pathname === "/login" || <Link className="btn btn-dark mx-1" to="/login" role="button">Sign in</Link>}
+                        {location.pathname === "/signup" || <Link className="btn btn-dark" to="/signup" role="button">Sign Up</Link>}
+                    </form>: <button onClick={handleLogout} className="btn btn-dark">Logout</button>}
                 </div>
             </div>
         </nav>
